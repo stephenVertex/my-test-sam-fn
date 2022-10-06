@@ -24,10 +24,15 @@ def lambda_handler(event, context):
         Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
     """
 
+    input_body = json.loads(event['body'])
+
+    x = float(input_body['x'])
+    y = float(input_body['y'])
+    x_plus_y = x+y
     
-    body_str = json.dumps({"hello" : "world"})
+    body_str = json.dumps({"x+y" : x_plus_y})
 
     return {
         "statusCode": 201,
-        "body": body_str,
+        "body": body_str
     }
